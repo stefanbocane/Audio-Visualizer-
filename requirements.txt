@@ -1,0 +1,4 @@
+moderngl>=5.8
+pygame>=2.5
+sounddevice>=0.4
+numpy>=1.24
