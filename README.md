@@ -1,234 +1,341 @@
-# Aurora Visualizer
+<p align="center">
+  <img src="assets/banner.svg" alt="Aurora Visualizer" width="100%"/>
+</p>
 
-A GPU-accelerated real-time music visualizer that captures your system audio and renders a reactive Aurora Borealis-themed visual experience. Built with Python, ModernGL (OpenGL 4.1), and pygame.
+<p align="center">
+  <b>A GPU-accelerated real-time music visualizer with Aurora Borealis aesthetics.</b><br/>
+  <sub>Captures system audio. Renders reactive visuals at 60fps. Pure Python + OpenGL.</sub>
+</p>
 
-Think planetarium laser show crossed with a rave — everything reacts to your music in real time.
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.10%2B-00b4b4?style=flat-square&logo=python&logoColor=white" alt="Python 3.10+"/>
+  <img src="https://img.shields.io/badge/OpenGL-4.1-7b2fcc?style=flat-square&logo=opengl&logoColor=white" alt="OpenGL 4.1"/>
+  <img src="https://img.shields.io/badge/platform-macOS-333333?style=flat-square&logo=apple&logoColor=white" alt="macOS"/>
+  <img src="https://img.shields.io/badge/license-MIT-00d47a?style=flat-square" alt="MIT License"/>
+  <img src="https://img.shields.io/badge/fps-60-00b4b4?style=flat-square" alt="60 FPS"/>
+</p>
 
-![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue) ![macOS](https://img.shields.io/badge/platform-macOS-lightgrey) ![OpenGL 4.1](https://img.shields.io/badge/OpenGL-4.1-green)
+<br/>
 
----
+> *Think planetarium laser show crossed with a rave — everything reacts to your music in real time.*
 
-## What It Looks Like
+<br/>
 
-The visualizer renders multiple layered visual elements simultaneously, all reacting to different aspects of the audio:
-
-- **Aurora Background** — 3-layer flowing aurora curtains using domain-warped fractal noise, with a twinkling starfield and cosmic dust. Colors shift from cool teals during quiet passages to intense violets during loud sections.
-- **Central Orb** — A morphing energy sphere with noise-distorted edges and internal plasma swirl. Pulses outward on beats with colored ripple rings (never white flash).
-- **Particle System** — 3,500 particles in four spiral arms with murmuration-like flocking behavior. Particles scatter on beats and explode outward on drops, colored through the aurora palette based on speed and distance.
-- **DNA Double Helix** — Stereo waveform data rendered as two intertwined glowing ribbon strands (left/right channels) with 64 energy bridge rungs that pulse on beats. Twist rate accelerates with energy.
-- **Frequency Bars** — 128 spectrum analyzer bars in a gentle arc with aurora color gradient (teal base to violet peaks), glowing edges, bright tip caps with trails, inter-bar glow bleed, and mirror reflections.
-- **Warp Tunnel** — Corkscrew spiral rays in 3 parallax depth layers with nebula noise texture. Activates at moderate energy and dramatically accelerates on drops.
-- **Shockwave Rings** — Expanding colored rings triggered by bass drops.
-- **Lissajous Scope** — Small oscilloscope in the corner showing stereo phase correlation.
-
-### Post-Processing
-
-- Bloom with soft colored extraction (no white washout)
-- Chromatic aberration that pulses with beats
-- Teal/violet color grading (shadows to highlights)
-- Film grain texture
-- Motion blur feedback between frames
-- Dramatic vignette that breathes with energy
-
----
-
-## Requirements
-
-- **macOS** (tested on macOS 13+) — requires OpenGL 4.1 (Metal-backed)
-- **Python 3.10+**
-- **BlackHole 2ch** — virtual audio loopback for digital audio capture (optional but recommended)
-
----
-
-## Setup Guide
-
-### Step 1: Install Python Dependencies
+## Quick Start
 
 ```bash
-# Clone the repo
 git clone https://github.com/stefanbocane/Audio-Visualizer-.git
 cd Audio-Visualizer-
-
-# Create a virtual environment (recommended)
-python3 -m venv venv
-source venv/bin/activate
-
-# Install dependencies
 pip install -r requirements.txt
+python3 main.py
 ```
 
-The dependencies are:
-| Package | Purpose |
-|---------|---------|
-| `moderngl` | OpenGL 4.1 context, shaders, framebuffers |
-| `pygame` | Window management, event loop, HUD text |
-| `sounddevice` | Real-time audio capture from system devices |
-| `numpy` | FFT analysis, particle physics, array math |
+> Picks up system audio automatically if [BlackHole](#-audio-setup-blackhole) is configured, otherwise falls back to microphone input. Runs in demo mode if no audio device is available.
 
-### Step 2: Install BlackHole (Recommended)
+<br/>
 
-BlackHole is a free virtual audio driver that lets the visualizer capture your system audio digitally — no microphone needed, zero background noise, works with headphones.
+---
+
+<br/>
+
+## Visual Elements
+
+The visualizer layers **8 distinct visual systems** that each react to different aspects of your music — bass, treble, beats, drops, stereo width, and overall energy.
+
+<br/>
+
+<table>
+<tr>
+<td width="50%">
+
+### Aurora Background
+3-layer flowing curtains using **domain-warped fractal noise** with a twinkling starfield and cosmic dust. Colors shift from cool teals during quiet passages to intense violets during loud sections.
+
+</td>
+<td width="50%">
+
+### Central Orb
+A **morphing energy sphere** with noise-distorted edges and internal plasma swirl. Pulses outward on beats with colored ripple rings. Never flashes white.
+
+</td>
+</tr>
+<tr>
+<td>
+
+### Particle System
+**3,500 particles** in four spiral arms with murmuration-like flocking. Scatter on beats, explode outward on drops. Colored through the aurora palette by speed and distance.
+
+</td>
+<td>
+
+### DNA Double Helix
+Stereo waveform (L/R channels) as two intertwined **glowing ribbon strands** with 64 energy bridge rungs. Twist rate accelerates with energy.
+
+</td>
+</tr>
+<tr>
+<td>
+
+### Frequency Bars
+**128 spectrum analyzer bars** in a gentle arc. Aurora color gradient from teal base to violet peaks, glowing edges, tip caps with trails, and mirror reflections.
+
+</td>
+<td>
+
+### Warp Tunnel
+**Corkscrew spiral rays** in 3 parallax depth layers with nebula noise texture. Activates at moderate energy, dramatically accelerates on drops.
+
+</td>
+</tr>
+<tr>
+<td>
+
+### Shockwave Rings
+Expanding **colored rings** triggered by bass drops. Teal-tinted, never white.
+
+</td>
+<td>
+
+### Lissajous Scope
+Small **stereo phase oscilloscope** in the corner showing L/R channel correlation.
+
+</td>
+</tr>
+</table>
+
+<br/>
+
+### Post-Processing Chain
+
+| Effect | Description |
+|--------|-------------|
+| **Bloom** | Soft colored extraction with 13-tap Gaussian blur at half resolution |
+| **Chromatic Aberration** | RGB channel split that pulses with beat intensity |
+| **Color Grading** | Shadows tinted teal, highlights shifted violet |
+| **Motion Blur** | Frame-to-frame feedback for smooth trails |
+| **Film Grain** | Subtle noise texture weighted to dark areas |
+| **Vignette** | Edge darkening that breathes with energy |
+
+<br/>
+
+---
+
+<br/>
+
+## Audio Setup (BlackHole)
+
+[BlackHole](https://existential.audio/blackhole/) is a free virtual audio driver that captures system audio digitally — no microphone, zero noise, works with headphones.
+
+<br/>
+
+### 1. Install
 
 ```bash
 brew install blackhole-2ch
 ```
 
-After installing:
+### 2. Approve & Restart
 
-1. **Approve the system extension**: Go to **System Settings > Privacy & Security**, scroll down, and click **Allow** next to the BlackHole kernel extension message.
-2. **Restart your Mac.** This is required for the audio driver to load.
+Go to **System Settings > Privacy & Security**, click **Allow** next to the BlackHole message. **Restart your Mac** (required).
 
-### Step 3: Set Up Audio Routing
+### 3. Create Multi-Output Device
 
-After restarting:
+1. Open **Audio MIDI Setup** (`Cmd+Space` → "Audio MIDI Setup")
+2. Click **+** in the bottom-left → **Create Multi-Output Device**
+3. Check both your **speakers/headphones** AND **BlackHole 2ch**
+4. Ensure speakers are listed **first** (Primary Device)
 
-1. Open **Audio MIDI Setup** (press `Cmd+Space`, type "Audio MIDI Setup", hit Enter)
-2. Click the **+** button in the bottom-left corner
-3. Select **Create Multi-Output Device**
-4. Check both:
-   - **Your speakers/headphones** (e.g., "MacBook Air Speakers")
-   - **BlackHole 2ch**
-5. Make sure your speakers are listed **first** (this is the "Primary Device")
-6. Right-click the new **Multi-Output Device** in the left sidebar
-7. Select **"Use This Device For Sound Output"**
+### 4. Set as Output
 
-> **Note:** Multi-Output Devices disable the macOS volume keys. Control volume from within your music app (Spotify, Apple Music, etc.) instead.
+Right-click the **Multi-Output Device** in the sidebar → **"Use This Device For Sound Output"**
 
-### Without BlackHole
+> [!NOTE]
+> Multi-Output Devices disable macOS volume keys. Control volume from your music app instead (Spotify, Apple Music, etc.).
 
-If you skip BlackHole, the visualizer falls back to your **default microphone** input. This works but:
-- Audio quality is lower (picks up room noise)
+<br/>
+
+<details>
+<summary><b>Without BlackHole</b></summary>
+<br/>
+
+Without BlackHole, the visualizer falls back to your **default microphone**:
+- Picks up room noise
 - Doesn't work with headphones
-- Quieter music may not register well
+- Quieter music may not register
 
-If no audio device is available at all, the app runs in **demo mode** with synthetic animated data.
+If no audio device is found, the app runs in **demo mode** with synthetic animated data.
+
+</details>
+
+<br/>
 
 ---
 
-## Running
+<br/>
 
-```bash
+## Controls
+
+```
 python3 main.py
 ```
 
-A launch menu appears where you can select resolution:
-- **1280x720** (720p) — good for lower-end hardware
-- **1920x1080** (1080p) — recommended
-- **Fullscreen** — uses your native display resolution
-
-Use arrow keys to select, Enter to launch.
-
-### Controls
+A launch menu lets you pick resolution (720p / 1080p / Fullscreen).
 
 | Key | Action |
-|-----|--------|
+|:---:|--------|
 | `Q` / `Esc` | Quit |
 | `F` | Toggle fullscreen |
 
-### HUD
+The HUD displays **BPM** (detected) and **FPS** in the top-left corner.
 
-The top-left corner displays:
-- **BPM** — detected beats per minute
-- **FPS** — current frame rate
+<br/>
 
 ---
+
+<br/>
 
 ## Architecture
 
 ```
-main.py                    Launch menu, game loop, audio→render bridge
-audio/
-  capture.py               Sounddevice stream, ring buffer, low-latency config
-  analyzer.py              FFT analysis, 6-band decomposition, stereo width
-  beat_detector.py         Beat/drop detection with adaptive thresholds
-renderer/
-  context.py               ModernGL context, FBOs, shader loading, blending
-  pipeline.py              Orchestrates all renderers, bloom, composite
-  bloom.py                 Bloom post-processing (extract + 2-pass Gaussian blur)
-  background.py            Aurora curtain background renderer
-  orb.py                   Central energy orb with beat ripple state machine
-  particles.py             3500-particle spiral system with CPU physics
-  dna_helix.py             Stereo waveform double helix with rungs
-  frequency_bars.py        128-bar spectrum analyzer with reflections
-  warp_tunnel.py           Radial warp tunnel overlay
-  shockwave.py             Expanding ring effect on drops
-  lissajous.py             Stereo phase scope
-  hud.py                   BPM/FPS text overlay
-shaders/
-  *.vert / *.frag          GLSL 4.1 vertex and fragment shaders for each element
-utils/
-  math_utils.py            Exponential smoothing, easing, SmoothedAudioState
-  color_palette.py         Aurora color definitions
+aurora-visualizer/
+├── main.py                     # Launch menu, game loop, audio→render bridge
+├── audio/
+│   ├── capture.py              # Sounddevice stream, ring buffer (256-frame blocks)
+│   ├── analyzer.py             # 1024-sample FFT, 6-band decomposition, stereo width
+│   └── beat_detector.py        # Adaptive beat/drop detection (1.3σ / 2.2σ thresholds)
+├── renderer/
+│   ├── context.py              # ModernGL context, FBOs, shader loading
+│   ├── pipeline.py             # Orchestrates all renderers + post-processing
+│   ├── bloom.py                # Extract → 2-pass 13-tap Gaussian blur
+│   ├── background.py           # Aurora curtains (FBM noise)
+│   ├── orb.py                  # Central orb + beat ripple state machine
+│   ├── particles.py            # 3500 particles, CPU physics (NumPy vectorized)
+│   ├── dna_helix.py            # Stereo waveform helix with bridge rungs
+│   ├── frequency_bars.py       # 128-bar spectrum analyzer
+│   ├── warp_tunnel.py          # Radial corkscrew tunnel overlay
+│   ├── shockwave.py            # Expanding ring on drops
+│   ├── lissajous.py            # Stereo phase scope
+│   └── hud.py                  # BPM/FPS text overlay
+├── shaders/
+│   └── *.vert / *.frag         # GLSL 4.1 shaders for each element
+├── utils/
+│   ├── math_utils.py           # Exponential smoothing, SmoothedAudioState
+│   └── color_palette.py        # Aurora color definitions
+└── requirements.txt
 ```
 
-### Render Pipeline (per frame)
+<br/>
 
-1. **Audio capture** — 256-sample blocks at 44.1kHz with low-latency config (~6ms)
-2. **FFT analysis** — 1024-sample window, 6 frequency bands, stereo waveforms
-3. **Beat detection** — Adaptive threshold (1.3σ for beats, 2.2σ for drops)
-4. **Smoothing** — Exponential smoothing on all audio metrics (responsive but fluid)
-5. **Scene render** — All visual elements drawn into an offscreen FBO with additive blending
-6. **Bloom** — Bright pixel extraction → 2-pass 13-tap Gaussian blur at half resolution
-7. **Composite** — Scene + bloom + motion blur feedback + chromatic aberration + color grading + vignette + film grain
-8. **HUD** — BPM/FPS overlay with alpha blending
+### Render Pipeline
 
-### Audio Latency
+```
+Audio In ──→ FFT ──→ Beat Detection ──→ Smoothing ──→ Scene Render ──→ Bloom ──→ Composite ──→ Display
+  ~6ms        23ms        <1ms              <1ms         per element     half-res    + post-fx      vsync
+                                                         additive blend
+```
 
-The pipeline is tuned for ~25ms total latency from sound to visual response:
-- Audio device buffer: ~6ms (256 frames)
-- FFT window: 23ms (overlapping, not additive)
-- Smoothing: 2 frames to reach 70% of target
+**Total audio-to-visual latency: ~25ms**
+
+<br/>
 
 ---
 
-## Performance Notes
+<br/>
 
-- Targets **60fps** with vsync, caps at 120fps
-- Particle physics runs on **CPU with NumPy vectorization** (macOS OpenGL 4.1 has no compute shaders)
-- 3,500 particles with 6-position trails = 21,000 GL_POINTS per frame
-- All shaders use **additive blending** for luminous layering
-- Bloom runs at **half resolution** for performance
-- Tested on M1/M2 MacBook Air at 1080p, steady 60fps
+## Performance
 
-### If Performance is Low
+| Metric | Value |
+|--------|-------|
+| Target framerate | 60fps (vsync), capped at 120fps |
+| Particle count | 3,500 with 6-position trails (21,000 GL_POINTS/frame) |
+| Particle physics | CPU — NumPy vectorized (no compute shaders on macOS) |
+| Bloom resolution | Half (for performance) |
+| Tested hardware | M1/M2 MacBook Air @ 1080p — solid 60fps |
 
-- Use 720p instead of 1080p
-- Close other GPU-intensive apps
-- The particle count can be reduced in `renderer/particles.py` (`NUM_PARTICLES`)
+<details>
+<summary><b>If performance is low</b></summary>
+<br/>
+
+- Use **720p** instead of 1080p from the launch menu
+- Close other GPU-intensive apps (Chrome, etc.)
+- Reduce `NUM_PARTICLES` in `renderer/particles.py`
+
+</details>
+
+<br/>
 
 ---
+
+<br/>
 
 ## Troubleshooting
 
-### "No audio device found" / Demo mode
+<details>
+<summary><b>"No audio device found" / Demo mode</b></summary>
+<br/>
 
-- Make sure BlackHole is installed and the system extension was approved
-- You must **restart** after approving the BlackHole extension
-- Check that the Multi-Output Device is set as system output
+- Ensure BlackHole is installed and the system extension was approved
+- You must **restart** after approving the extension
+- Verify the Multi-Output Device is set as system output in Audio MIDI Setup
 
-### Volume keys don't work
+</details>
 
-This is a macOS limitation with Multi-Output Devices. Control volume from your music app instead (Spotify, Apple Music, browser, etc.).
+<details>
+<summary><b>Volume keys don't work</b></summary>
+<br/>
 
-### Shader compile error
+macOS limitation with Multi-Output Devices. Use your music app's volume slider instead.
 
-- Requires OpenGL 4.1 (all modern Macs support this)
-- If you see GLSL errors, check that no shader files are corrupted
+</details>
 
-### Choppy/laggy visuals
+<details>
+<summary><b>Shader compile error</b></summary>
+<br/>
 
-- Ensure you're running on the discrete GPU if available (Energy Saver settings)
+- Requires OpenGL 4.1 (all Macs from 2012+ support this via Metal)
+- Check that shader files aren't corrupted
+
+</details>
+
+<details>
+<summary><b>Choppy / laggy visuals</b></summary>
+<br/>
+
 - Lower the resolution via the launch menu
-- Close Chrome/other GPU-heavy apps
+- Close Chrome and other GPU-heavy apps
+- Ensure you're on the discrete GPU if your Mac has one
+
+</details>
+
+<br/>
 
 ---
+
+<br/>
+
+## Dependencies
+
+| Package | Version | Purpose |
+|---------|---------|---------|
+| [`moderngl`](https://github.com/moderngl/moderngl) | >= 5.8 | OpenGL 4.1 context, shaders, FBOs, VAOs |
+| [`pygame`](https://www.pygame.org/) | >= 2.5 | Window management, event loop, HUD text |
+| [`sounddevice`](https://python-sounddevice.readthedocs.io/) | >= 0.4 | Real-time audio capture from system devices |
+| [`numpy`](https://numpy.org/) | >= 1.24 | FFT analysis, particle physics, array math |
+
+<br/>
+
+---
+
+<br/>
 
 ## License
 
-MIT
+MIT — do whatever you want with it.
+
+<br/>
 
 ---
 
-## Credits
-
-Built with Claude Code by [stefanbocane](https://github.com/stefanbocane).
+<p align="center">
+  <sub>Built with <a href="https://claude.ai/claude-code">Claude Code</a></sub>
+</p>

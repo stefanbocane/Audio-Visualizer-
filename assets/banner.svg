@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="300" viewBox="0 0 900 300">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#030b15"/>
+      <stop offset="50%" style="stop-color:#0a1628"/>
+      <stop offset="100%" style="stop-color:#05101f"/>
+    </linearGradient>
+    <linearGradient id="aurora1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00b4b4;stop-opacity:0"/>
+      <stop offset="20%" style="stop-color:#00b4b4;stop-opacity:0.6"/>
+      <stop offset="50%" style="stop-color:#00d47a;stop-opacity:0.8"/>
+      <stop offset="80%" style="stop-color:#7b2fcc;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#7b2fcc;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="aurora2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7b2fcc;stop-opacity:0"/>
+      <stop offset="30%" style="stop-color:#c850c0;stop-opacity:0.4"/>
+      <stop offset="60%" style="stop-color:#00d47a;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#00b4b4;stop-opacity:0"/>
+    </linearGradient>
+    <linearGradient id="orb" cx="50%" cy="50%" r="50%" fx="50%" fy="50%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" style="stop-color:#66e5ff;stop-opacity:0.9"/>
+      <stop offset="40%" style="stop-color:#00b4b4;stop-opacity:0.6"/>
+      <stop offset="70%" style="stop-color:#7b2fcc;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#7b2fcc;stop-opacity:0"/>
+    </linearGradient>
+    <radialGradient id="orbGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#66e5ff;stop-opacity:0.9"/>
+      <stop offset="30%" style="stop-color:#00b4b4;stop-opacity:0.5"/>
+      <stop offset="60%" style="stop-color:#7b2fcc;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#7b2fcc;stop-opacity:0"/>
+    </radialGradient>
+    <filter id="blur1" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="20"/>
+    </filter>
+    <filter id="blur2" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="8"/>
+    </filter>
+    <filter id="blur3" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="300" fill="url(#bg)"/>
+
+  <!-- Stars -->
+  <circle cx="45" cy="30" r="1" fill="#ffffff" opacity="0.5"/>
+  <circle cx="120" cy="65" r="0.8" fill="#ffffff" opacity="0.4"/>
+  <circle cx="200" cy="20" r="1.2" fill="#aaddff" opacity="0.6"/>
+  <circle cx="310" cy="45" r="0.7" fill="#ffffff" opacity="0.3"/>
+  <circle cx="400" cy="15" r="1" fill="#ffffff" opacity="0.5"/>
+  <circle cx="520" cy="55" r="0.9" fill="#aaddff" opacity="0.4"/>
+  <circle cx="650" cy="25" r="1.1" fill="#ffffff" opacity="0.5"/>
+  <circle cx="740" cy="60" r="0.8" fill="#ffffff" opacity="0.3"/>
+  <circle cx="820" cy="35" r="1" fill="#aaddff" opacity="0.6"/>
+  <circle cx="870" cy="70" r="0.7" fill="#ffffff" opacity="0.4"/>
+  <circle cx="80" cy="120" r="0.6" fill="#ffffff" opacity="0.3"/>
+  <circle cx="780" cy="100" r="0.9" fill="#ffffff" opacity="0.4"/>
+
+  <!-- Aurora curtain layers (blurred) -->
+  <path d="M0,80 Q100,40 200,70 Q300,100 400,55 Q500,30 600,65 Q700,90 800,50 Q850,40 900,60 L900,160 Q800,130 700,155 Q600,175 500,140 Q400,115 300,150 Q200,170 100,135 Q50,120 0,140 Z"
+        fill="url(#aurora1)" filter="url(#blur1)" opacity="0.7"/>
+  <path d="M0,100 Q150,65 250,90 Q350,120 500,75 Q600,50 700,85 Q800,110 900,80 L900,170 Q800,150 700,165 Q600,180 500,155 Q400,135 300,160 Q200,175 100,145 Q50,135 0,155 Z"
+        fill="url(#aurora2)" filter="url(#blur1)" opacity="0.5"/>
+
+  <!-- Central orb glow -->
+  <circle cx="450" cy="150" r="80" fill="url(#orbGlow)" filter="url(#blur2)" opacity="0.6"/>
+  <circle cx="450" cy="150" r="35" fill="url(#orbGlow)" filter="url(#blur3)" opacity="0.8"/>
+  <circle cx="450" cy="150" r="18" fill="#66e5ff" opacity="0.15"/>
+
+  <!-- Frequency bar suggestion (bottom) -->
+  <g opacity="0.5" filter="url(#glow)">
+    <rect x="180" y="248" width="4" height="22" rx="2" fill="#00b4b4"/>
+    <rect x="190" y="242" width="4" height="28" rx="2" fill="#00c49a"/>
+    <rect x="200" y="236" width="4" height="34" rx="2" fill="#00d47a"/>
+    <rect x="210" y="230" width="4" height="40" rx="2" fill="#00d47a"/>
+    <rect x="220" y="224" width="4" height="46" rx="2" fill="#2dcc6f"/>
+    <rect x="230" y="218" width="4" height="52" rx="2" fill="#4dbb70"/>
+    <rect x="240" y="222" width="4" height="48" rx="2" fill="#6aaa72"/>
+    <rect x="250" y="228" width="4" height="42" rx="2" fill="#8899aa"/>
+    <rect x="260" y="234" width="4" height="36" rx="2" fill="#9966bb"/>
+    <rect x="270" y="230" width="4" height="40" rx="2" fill="#7b2fcc"/>
+    <rect x="280" y="226" width="4" height="44" rx="2" fill="#8833cc"/>
+    <rect x="290" y="222" width="4" height="48" rx="2" fill="#9944cc"/>
+    <rect x="300" y="218" width="4" height="52" rx="2" fill="#aa44cc"/>
+    <rect x="310" y="214" width="4" height="56" rx="2" fill="#bb55cc"/>
+    <rect x="320" y="210" width="4" height="60" rx="2" fill="#cc66cc"/>
+    <rect x="330" y="214" width="4" height="56" rx="2" fill="#bb55cc"/>
+    <rect x="340" y="218" width="4" height="52" rx="2" fill="#aa44cc"/>
+    <rect x="350" y="222" width="4" height="48" rx="2" fill="#9944cc"/>
+    <rect x="360" y="226" width="4" height="44" rx="2" fill="#8833cc"/>
+    <rect x="370" y="232" width="4" height="38" rx="2" fill="#7b2fcc"/>
+    <rect x="530" y="232" width="4" height="38" rx="2" fill="#7b2fcc"/>
+    <rect x="540" y="226" width="4" height="44" rx="2" fill="#8833cc"/>
+    <rect x="550" y="222" width="4" height="48" rx="2" fill="#9944cc"/>
+    <rect x="560" y="218" width="4" height="52" rx="2" fill="#aa44cc"/>
+    <rect x="570" y="214" width="4" height="56" rx="2" fill="#bb55cc"/>
+    <rect x="580" y="210" width="4" height="60" rx="2" fill="#cc66cc"/>
+    <rect x="590" y="214" width="4" height="56" rx="2" fill="#bb55cc"/>
+    <rect x="600" y="218" width="4" height="52" rx="2" fill="#aa44cc"/>
+    <rect x="610" y="222" width="4" height="48" rx="2" fill="#9944cc"/>
+    <rect x="620" y="228" width="4" height="42" rx="2" fill="#8899aa"/>
+    <rect x="630" y="234" width="4" height="36" rx="2" fill="#6aaa72"/>
+    <rect x="640" y="230" width="4" height="40" rx="2" fill="#4dbb70"/>
+    <rect x="650" y="224" width="4" height="46" rx="2" fill="#2dcc6f"/>
+    <rect x="660" y="230" width="4" height="40" rx="2" fill="#00d47a"/>
+    <rect x="670" y="236" width="4" height="34" rx="2" fill="#00d47a"/>
+    <rect x="680" y="242" width="4" height="28" rx="2" fill="#00c49a"/>
+    <rect x="690" y="248" width="4" height="22" rx="2" fill="#00b4b4"/>
+  </g>
+
+  <!-- Particle dots scattered around -->
+  <g opacity="0.6">
+    <circle cx="150" cy="130" r="2" fill="#00d47a" filter="url(#blur3)"/>
+    <circle cx="200" cy="160" r="1.5" fill="#00b4b4"/>
+    <circle cx="280" cy="110" r="2.5" fill="#7b2fcc" filter="url(#blur3)"/>
+    <circle cx="330" cy="180" r="1.8" fill="#00d47a"/>
+    <circle cx="380" cy="95" r="2" fill="#c850c0" filter="url(#blur3)"/>
+    <circle cx="520" cy="100" r="2.2" fill="#00b4b4" filter="url(#blur3)"/>
+    <circle cx="570" cy="180" r="1.5" fill="#7b2fcc"/>
+    <circle cx="620" cy="120" r="2" fill="#00d47a" filter="url(#blur3)"/>
+    <circle cx="700" cy="160" r="2.5" fill="#c850c0" filter="url(#blur3)"/>
+    <circle cx="750" cy="110" r="1.8" fill="#00b4b4"/>
+  </g>
+
+  <!-- Title text -->
+  <text x="450" y="142" text-anchor="middle" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="42" font-weight="700" fill="#e0f5f5" letter-spacing="3">AURORA</text>
+  <text x="450" y="175" text-anchor="middle" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="18" font-weight="300" fill="#66cccc" letter-spacing="8" opacity="0.9">VISUALIZER</text>
+  <text x="450" y="200" text-anchor="middle" font-family="'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="11" font-weight="400" fill="#5599aa" letter-spacing="2" opacity="0.7">REAL-TIME GPU-ACCELERATED MUSIC VISUALIZATION</text>
+</svg>
